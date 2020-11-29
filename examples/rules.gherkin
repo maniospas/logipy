@@ -1,0 +1,42 @@
+SCENARIO:
+    WHEN returned by __add__
+    THEN NOT is_counter
+
+SCENARIO:
+    WHEN returned by range
+    THEN is_iterated
+    AND is_counter
+
+SCENARIO:
+    WHEN called by print_counter
+    THEN SHOULD is_counter
+
+SCENARIO:
+    WHEN returned by array
+    THEN numpy_const
+
+SCENARIO:
+    GIVEN numpy_const
+    WHEN returned by __iadd__
+    THEN numpy_added
+    AND NOT numpy_const
+
+SCENARIO:
+    WHEN call acquire
+    THEN SHOULD NOT locked
+    AND locked
+    AND PRINT locked [VAR.logipy_value()]
+
+SCENARIO:
+    GIVEN locked
+    WHEN call release
+    THEN PRINT released by [METHOD]
+    AND NOT locked
+
+SCENARIO:
+    WHEN returned by train_test_split
+    THEN produced_by_validation_split
+
+SCENARIO:
+    WHEN called by fit
+    THEN SHOULD produced_by_validation_split
